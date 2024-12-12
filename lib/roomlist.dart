@@ -107,7 +107,7 @@ class _listofrooms extends State<roomlist> {
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(
-                //     builder: (context) => dashboard(passedid: roomsarray[index].id),
+                dashboard(passedid: roomsarray[index].id);
                 //   ),
                 // );
                 setState(() {

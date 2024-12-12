@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yarab/appbarcustom.dart';
 import 'package:yarab/appdrawer.dart';
+import 'package:yarab/profile.dart';
 import 'package:yarab/room.dart';
 import 'package:yarab/roomlist.dart';
 import 'package:yarab/scan.dart';
@@ -58,7 +59,15 @@ class dashboard extends StatelessWidget {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
-                          Image(image: AssetImage('assets/pfp.png'),height: 40,width: 40,),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                _createRoute(profile())
+                              );
+                            },
+                              child: Image(image: AssetImage('assets/pfp.png'),height: 40,width: 40,)
+                          ),
                       ],
                     ),
                   ),
@@ -120,63 +129,21 @@ class dashboard extends StatelessWidget {
   }
 }
 
-// return Scaffold(
-// drawer: const appdrawer(),
-// backgroundColor: Colors.white,
-// body:
-// SafeArea(
-// child: Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [ Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [
-// const appbar(),
-// const SizedBox(height: 20),
-// const Padding (
-// padding: EdgeInsets.symmetric(horizontal: 40),
-// child: Column(
-// crossAxisAlignment: CrossAxisAlignment.start,
-// children: [
-// Text('Welcome Home,',
-// style: TextStyle(
-// fontSize: 20,
-// fontWeight: FontWeight.w900,
-// ),),
-// Text('Username',
-// style: TextStyle(
-// fontSize: 70,
-// fontWeight: FontWeight.w900,
-// ),
-// ),
-// ],
-// ),
-// ),
-//
-// Padding(
-// padding: const EdgeInsets.symmetric(horizontal: 30.0),
-// child: Divider(
-// color: Colors.grey[700],
-// thickness: 1,
-// ),
-// ),
-// const SizedBox(height: 10),
-//
-// ],
-// ),
-// Column(
-// children: [
-// const Padding(
-// padding: EdgeInsets.only(left: 10,right: 10),
-// child: roomlist(),
-// ),
-// SizedBox(height: 10,),
-// Padding(
-// padding: const EdgeInsets.only(left: 10,right: 10),
-// child: room(roomid: passedid),
-// )
-// ]
-// ),
-// ],
-// ),
-// ),
-// );
+Route _createRoute(Widget hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => hello,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const curve = Curves.easeInOutSine;
+
+      var begin = Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
+}
