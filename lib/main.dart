@@ -27,28 +27,32 @@ class Login extends StatelessWidget {
         body:SingleChildScrollView(
           child: Column(
             children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 400,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: <Color>[
-                        Color(0xFFD0CD37),
-                        Color(0xFF27A8E0),
-                      ],
-                    ),
-                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(300),bottomRight: Radius.circular(300))
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 400,
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: <Color>[
+                      Color(0xFFD0CD37),
+                      Color(0xFF27A8E0),
+                    ],
                   ),
-                  child: Container(
-                    height: 5,
-                    width: 5,
-                    decoration: BoxDecoration(
-                      // color: Colors.blue
-                    ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(300),
+                    bottomRight: Radius.circular(300),
                   ),
                 ),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    child: Image(image: AssetImage("assets/NewLogo.png")),
+                  ),
+                ),
+              ),
               SizedBox(height: 60,),
               Container(
                   margin: const EdgeInsets.symmetric(horizontal: 25.0),

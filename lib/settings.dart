@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yarab/Changepassword.dart';
 import 'package:yarab/appbarcustom.dart';
 import 'package:yarab/appdrawer.dart';
 import 'package:yarab/profile.dart';
@@ -253,16 +254,23 @@ class Settings extends StatelessWidget {
                                 SizedBox(height: 40,),
                                 Padding(
                                   padding:  EdgeInsets.only(left: 50, right: 50),
-                                  child: Row(
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Icon(Icons.person),
-                                      SizedBox(width: 30,),
-                                      Text("Edit Profile",style: TextStyle(
-                                        fontSize: 12,
-                                      ),
-                                      ),
-                                    ],
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(context, 
+                                        _createRoute(changepass())
+                                      );
+                                    },
+                                    child: Row(
+                                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(Icons.key),
+                                        SizedBox(width: 30,),
+                                        Text("Change Password",style: TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                                 SizedBox(height: 10,),

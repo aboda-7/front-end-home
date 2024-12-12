@@ -46,12 +46,20 @@ class Register extends StatelessWidget {
                         Navigator.push(context, _createRoute(Login()));
                       },
                       child: Icon(Icons.arrow_back,color: Colors.white,size: 40,),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: 65,
+                        width: 65,
+                        child: Image(image: AssetImage("assets/NewLogo2.png")),
+                      ),
                     )
                     // Image.asset('assets/NewLogo2.png')
                   ],
                 ),
               ),
-              SizedBox(height: 25,),
+              // SizedBox(height: 25,),
               Container(
                 height: MediaQuery.of(context).size.height-140,
                 width: MediaQuery.of(context).size.width,
