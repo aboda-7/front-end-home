@@ -6,6 +6,7 @@ import 'package:yarab/room.dart';
 import 'package:yarab/roomlist.dart';
 import 'package:yarab/scan.dart';
 import 'package:slider_button/slider_button.dart';
+import 'package:yarab/settings.dart';
 
 
 import 'main.dart';
@@ -61,7 +62,12 @@ class profile extends StatelessWidget {
                       Center(
                         child: GestureDetector(
                             child: Image(image: AssetImage('assets/pfp.png'),height: 100,width: 100,),
-
+                            onTap: (){
+                            Navigator.push(
+                                context,
+                                _createRoute(Settings())
+                            );
+                          },
                         ),
                       ),
                       SizedBox(height: 15,),
@@ -238,4 +244,23 @@ class profile extends StatelessWidget {
       ),
     );
   }
+}
+
+Route _createRoute(Widget hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => hello,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const curve = Curves.easeInOutSine;
+
+      var begin = Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
