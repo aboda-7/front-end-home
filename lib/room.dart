@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yarab/AddDevices.dart';
 import 'package:yarab/deletemessage.dart';
 import 'package:yarab/roomlist.dart';
 import 'roomlist.dart';
@@ -84,7 +85,12 @@ class _RoomState extends State<room> {
                 itemBuilder: (context, index) {
                   if (index == _deviceCount) {
                     return GestureDetector(
-                      onTap: _addDevice,
+                      onTap: //_addDevice,
+                      (){
+                        Navigator.push(context,
+                            _createRoute(AddDevices())
+                        );
+                      },
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: AnimatedContainer(
@@ -168,3 +174,23 @@ class _RoomState extends State<room> {
     );
   }
 }
+
+
+Route _createRoute(Widget hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => hello,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const curve = Curves.easeInOutSine;
+      var begin = Offset(-1.0, 0.0);
+      var end = Offset.zero;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
+}
+

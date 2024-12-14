@@ -97,14 +97,7 @@ class Login extends StatelessWidget {
                         height: 50,
                         width: 300,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: <Color>[
-                              Color(0xFFD0CD37),
-                              Color(0xFF27A8E0),
-                            ],
-                          ),
+                        color: Color(0xFF27A8E0),
                           borderRadius: BorderRadius.circular(50)
                         ),
                         child: Center(
