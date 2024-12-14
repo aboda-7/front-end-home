@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yarab/DevicesPage.dart';
 import 'package:yarab/appbarcustom.dart';
 import 'package:yarab/appdrawer.dart';
 import 'package:yarab/profile.dart';
@@ -115,11 +116,19 @@ class dashboard extends StatelessWidget {
             SizedBox(height: 15,),
             Padding(
               padding: const EdgeInsets.only(right: 10, left: 10),
-              child: Text("Master Button", style: TextStyle(
-                fontFamily: 'ProductSans',
-                fontSize: 20,
-                color: Colors.blue
-              ),
+              child: GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                      context,
+                      _createRoute(Devicespage())
+                  );
+                },
+                child: Text("Master Button", style: TextStyle(
+                  fontFamily: 'ProductSans',
+                  fontSize: 20,
+                  color: Colors.blue
+                ),
+                ),
               ),
             ),
               room(roomid: passedid),
