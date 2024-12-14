@@ -28,10 +28,10 @@ class roomlist extends StatefulWidget {
 class _listofrooms extends State<roomlist> {
 
   final List<Rooms> roomsarray = <Rooms>[
-    Rooms(const Icon(Icons.door_back_door,color: Colors.white,),1,"Living",true),
-    Rooms(const Icon(Icons.bathroom,color: Colors.white,),2,"Bathroom",false),
-    Rooms(const Icon(Icons.room_preferences,color: Colors.white,),3,"Office",false),
-    Rooms(const Icon(Icons.bedroom_parent,color: Colors.white,),4,"Bedroom",false),
+    Rooms(const Icon(Icons.door_back_door,color: Colors.black,),1,"Living",true),
+    Rooms(const Icon(Icons.bathroom,color: Colors.black,),2,"Bathroom",false),
+    Rooms(const Icon(Icons.room_preferences,color: Colors.black,),3,"Office",false),
+    Rooms(const Icon(Icons.bedroom_parent,color: Colors.black,),4,"Bedroom",false),
   ];
 
   late int _roomumber=5;
@@ -135,7 +135,7 @@ class _listofrooms extends State<roomlist> {
                     roomsarray[index].roomicon,
                     Text('${roomsarray[index].name}',style: TextStyle(
                         fontFamily: 'ProductSans',
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ],

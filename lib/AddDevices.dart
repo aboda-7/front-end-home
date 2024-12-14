@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yarab/AddDevices2.dart';
 import 'package:yarab/Changepassword.dart';
 import 'package:yarab/appbarcustom.dart';
 import 'package:yarab/appdrawer.dart';
+import 'package:yarab/dashboard.dart';
 import 'package:yarab/profile.dart';
 import 'package:yarab/room.dart';
 import 'package:yarab/roomlist.dart';
@@ -41,7 +43,11 @@ class AddDevices extends StatelessWidget {
                   child: Row(
                     children: [
                       GestureDetector(
-                        child: Icon(Icons.arrow_back,color: Colors.white,size: 40,),
+                        child: Icon(Icons.arrow_back,color: Colors.white,size: 40,), 
+                        onTap: (){
+                          Navigator.push(context,
+                              _createRoute(dashboard(passedid: 1)));
+                        },
                       ),
                     ],
                   ),
@@ -99,129 +105,56 @@ class AddDevices extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top:15,left: 15),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.devices),
-                                    SizedBox(width: 20,),
-                                    Text("Device"),
-                                    SizedBox(width: 200,),
-                                    GestureDetector(
-                                        onTap: (){
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (BuildContext context){
-                                                return Container(
-                                                  height: 200,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFF7F7F7),
-                                                    borderRadius: BorderRadius.circular(25),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      SizedBox(height: 25,),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(left: 15),
-                                                        child: Text("Device Information",style: TextStyle(
-                                                          fontSize: 17,
-                                                          fontFamily: 'ProductSans',
-                                                          fontWeight: FontWeight.bold,
-                                                        ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(height: 40,),
-                                                      Padding(
-                                                        padding: EdgeInsets.symmetric(horizontal: 15),
-                                                        child: Container(
-                                                          height: 50,
-                                                          decoration: BoxDecoration(
-                                                              color: Colors.white,
-                                                              borderRadius: BorderRadius.circular(15)
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                            children: [
-                                                              Text("Number of output devices (e.g., light bulbs) connected to this switch",style: TextStyle(
-                                                                fontSize: 10,
-                                                                color:Color(0xFF737373),
-                                                              ),
-                                                              ),
-                                                              Padding(
-                                                                padding:  EdgeInsets.only(right: 20),
-                                                                child: Text("3",style: TextStyle(
-                                                                  fontSize: 14,
-                                                                  color:Colors.black,
-                                                                ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }
-                                          );
-                                        },
-                                        child: Icon(Icons.info_outline)
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 10,),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 10),
-                                child: Divider(),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top:15,left: 15),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.devices),
-                                    SizedBox(width: 20,),
-                                    Text("Device"),
-                                    SizedBox(width: 200,),
-                                    GestureDetector(
-                                        onTap: (){
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (BuildContext context){
-                                                return Container(
-                                                  height: 200,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFF7F7F7),
-                                                    borderRadius: BorderRadius.circular(25),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      SizedBox(height: 25,),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(left: 15),
-                                                        child: Text("Device Information",style: TextStyle(
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, _createRoute(Adddevices2()));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.devices),
+                                      SizedBox(width: 20,),
+                                      Text("Device"),
+                                      SizedBox(width: 200,),
+                                      GestureDetector(
+                                          onTap: (){
+                                            showModalBottomSheet(
+                                                context: context,
+                                                builder: (BuildContext context){
+                                                  return Container(
+                                                    height: 200,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFF7F7F7),
+                                                      borderRadius: BorderRadius.circular(25),
+                                                    ),
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        SizedBox(height: 25,),
+                                                        Padding(
+                                                          padding: EdgeInsets.only(left: 15),
+                                                          child: Text("Device Information",style: TextStyle(
                                                             fontSize: 17,
                                                             fontFamily: 'ProductSans',
                                                             fontWeight: FontWeight.bold,
                                                           ),
+                                                          ),
                                                         ),
-                                                      ),
-                                                      SizedBox(height: 40,),
-                                                      Padding(
-                                                        padding: EdgeInsets.symmetric(horizontal: 15),
+                                                        SizedBox(height: 40,),
+                                                        Padding(
+                                                          padding: EdgeInsets.symmetric(horizontal: 15),
                                                           child: Container(
                                                             height: 50,
                                                             decoration: BoxDecoration(
-                                                              color: Colors.white,
-                                                              borderRadius: BorderRadius.circular(15)
+                                                                color: Colors.white,
+                                                                borderRadius: BorderRadius.circular(15)
                                                             ),
                                                             child: Row(
                                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                               children: [
                                                                 Text("Number of output devices (e.g., light bulbs) connected to this switch",style: TextStyle(
-                                                                    fontSize: 10,
-                                                                    color:Color(0xFF737373),
-                                                                  ),
+                                                                  fontSize: 10,
+                                                                  color:Color(0xFF737373),
+                                                                ),
                                                                 ),
                                                                 Padding(
                                                                   padding:  EdgeInsets.only(right: 20),
@@ -234,16 +167,17 @@ class AddDevices extends StatelessWidget {
                                                               ],
                                                             ),
                                                           ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }
-                                          );
-                                        },
-                                        child: Icon(Icons.info_outline)
-                                    ),
-                                  ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                            );
+                                          },
+                                          child: Icon(Icons.info_outline)
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 10,),
@@ -253,74 +187,161 @@ class AddDevices extends StatelessWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top:15,left: 15),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.devices),
-                                    SizedBox(width: 20,),
-                                    Text("Device"),
-                                    SizedBox(width: 200,),
-                                    GestureDetector(
-                                        onTap: (){
-                                          showModalBottomSheet(
-                                              context: context,
-                                              builder: (BuildContext context){
-                                                return Container(
-                                                  height: 200,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xFFF7F7F7),
-                                                    borderRadius: BorderRadius.circular(25),
-                                                  ),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      SizedBox(height: 25,),
-                                                      Padding(
-                                                        padding: EdgeInsets.only(left: 15),
-                                                        child: Text("Device Information",style: TextStyle(
-                                                          fontSize: 17,
-                                                          fontFamily: 'ProductSans',
-                                                          fontWeight: FontWeight.bold,
-                                                        ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(height: 40,),
-                                                      Padding(
-                                                        padding: EdgeInsets.symmetric(horizontal: 15),
-                                                        child: Container(
-                                                          height: 50,
-                                                          decoration: BoxDecoration(
-                                                              color: Colors.white,
-                                                              borderRadius: BorderRadius.circular(15)
-                                                          ),
-                                                          child: Row(
-                                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                            children: [
-                                                              Text("Number of output devices (e.g., light bulbs) connected to this switch",style: TextStyle(
-                                                                fontSize: 10,
-                                                                color:Color(0xFF737373),
-                                                              ),
-                                                              ),
-                                                              Padding(
-                                                                padding:  EdgeInsets.only(right: 20),
-                                                                child: Text("3",style: TextStyle(
-                                                                  fontSize: 14,
-                                                                  color:Colors.black,
-                                                                ),
-                                                                ),
-                                                              ),
-                                                            ],
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, _createRoute(Adddevices2()));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.devices),
+                                      SizedBox(width: 20,),
+                                      Text("Device"),
+                                      SizedBox(width: 200,),
+                                      GestureDetector(
+                                          onTap: (){
+                                            showModalBottomSheet(
+                                                context: context,
+                                                builder: (BuildContext context){
+                                                  return Container(
+                                                    height: 200,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFF7F7F7),
+                                                      borderRadius: BorderRadius.circular(25),
+                                                    ),
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        SizedBox(height: 25,),
+                                                        Padding(
+                                                          padding: EdgeInsets.only(left: 15),
+                                                          child: Text("Device Information",style: TextStyle(
+                                                              fontSize: 17,
+                                                              fontFamily: 'ProductSans',
+                                                              fontWeight: FontWeight.bold,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                );
-                                              }
-                                          );
-                                        },
-                                        child: Icon(Icons.info_outline)
-                                    ),
-                                  ],
+                                                        SizedBox(height: 40,),
+                                                        Padding(
+                                                          padding: EdgeInsets.symmetric(horizontal: 15),
+                                                            child: Container(
+                                                              height: 50,
+                                                              decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                borderRadius: BorderRadius.circular(15)
+                                                              ),
+                                                              child: Row(
+                                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                                children: [
+                                                                  Text("Number of output devices (e.g., light bulbs) connected to this switch",style: TextStyle(
+                                                                      fontSize: 10,
+                                                                      color:Color(0xFF737373),
+                                                                    ),
+                                                                  ),
+                                                                  Padding(
+                                                                    padding:  EdgeInsets.only(right: 20),
+                                                                    child: Text("3",style: TextStyle(
+                                                                      fontSize: 14,
+                                                                      color:Colors.black,
+                                                                    ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                            );
+                                          },
+                                          child: Icon(Icons.info_outline)
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10,),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 10),
+                                child: Divider(),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top:15,left: 15),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, _createRoute(Adddevices2()));
+                                  },
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.devices),
+                                      SizedBox(width: 20,),
+                                      Text("Device"),
+                                      SizedBox(width: 200,),
+                                      GestureDetector(
+                                          onTap: (){
+                                            showModalBottomSheet(
+                                                context: context,
+                                                builder: (BuildContext context){
+                                                  return Container(
+                                                    height: 200,
+                                                    decoration: BoxDecoration(
+                                                      color: Color(0xFFF7F7F7),
+                                                      borderRadius: BorderRadius.circular(25),
+                                                    ),
+                                                    child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        SizedBox(height: 25,),
+                                                        Padding(
+                                                          padding: EdgeInsets.only(left: 15),
+                                                          child: Text("Device Information",style: TextStyle(
+                                                            fontSize: 17,
+                                                            fontFamily: 'ProductSans',
+                                                            fontWeight: FontWeight.bold,
+                                                          ),
+                                                          ),
+                                                        ),
+                                                        SizedBox(height: 40,),
+                                                        Padding(
+                                                          padding: EdgeInsets.symmetric(horizontal: 15),
+                                                          child: Container(
+                                                            height: 50,
+                                                            decoration: BoxDecoration(
+                                                                color: Colors.white,
+                                                                borderRadius: BorderRadius.circular(15)
+                                                            ),
+                                                            child: Row(
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              children: [
+                                                                Text("Number of output devices (e.g., light bulbs) connected to this switch",style: TextStyle(
+                                                                  fontSize: 10,
+                                                                  color:Color(0xFF737373),
+                                                                ),
+                                                                ),
+                                                                Padding(
+                                                                  padding:  EdgeInsets.only(right: 20),
+                                                                  child: Text("3",style: TextStyle(
+                                                                    fontSize: 14,
+                                                                    color:Colors.black,
+                                                                  ),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                            );
+                                          },
+                                          child: Icon(Icons.info_outline)
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -336,4 +357,24 @@ class AddDevices extends StatelessWidget {
       ),
     );
   }
+}
+
+
+Route _createRoute(Widget hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => hello,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const curve = Curves.easeInOutSine;
+
+      var begin = Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
