@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yarab/DevicesPage.dart';
+import 'package:yarab/Scenes.dart';
 import 'package:yarab/appbarcustom.dart';
 import 'package:yarab/appdrawer.dart';
 import 'package:yarab/profile.dart';
@@ -28,6 +29,14 @@ class dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.push(
+                context, _createRoute(Scenes())
+            );
+          },
+          child: Icon(Icons.ac_unit),
+      ),
       drawer: appdrawer(),
       backgroundColor: Colors.white,
       body:

@@ -44,7 +44,7 @@ class _listofrooms extends State<roomlist> {
 
   void _addroom() {
     setState(() {
-      roomsarray.add(Rooms(const Icon(Icons.bedroom_parent, color: Colors.white),_roomumber++,"Bedroom",false));
+      roomsarray.add(Rooms(const Icon(Icons.bedroom_parent, color: Colors.black),_roomumber++,"Bedroom",false));
     });
   }
 
@@ -87,10 +87,10 @@ class _listofrooms extends State<roomlist> {
                   Column(
                     children: [
                       SizedBox(height: 25,),
-                      Icon(Icons.add,color: Colors.white,),
+                      Icon(Icons.add,color: Colors.black,),
                       Text("Add Room", style: TextStyle(
                           fontFamily: "ProductSans",
-                          color: Colors.white
+                          color: Colors.black
                         ),
                       ),
                     ],
