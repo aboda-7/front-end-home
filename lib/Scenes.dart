@@ -14,6 +14,8 @@ import 'package:slider_button/slider_button.dart';
 import 'main.dart';
 import 'roomlist.dart';
 
+bool ispressed = false;
+
 class Scenes extends StatelessWidget {
   const Scenes({super.key});
 
@@ -173,6 +175,182 @@ class Scenes extends StatelessWidget {
                         itemCount: 20, // Number of containers in the grid
                         itemBuilder: (context, index) {
                           return GestureDetector(
+                            onTap: (){
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (BuildContext context){
+                                    return Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 450,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFF7F7F7),
+                                        borderRadius: BorderRadius.circular(25),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 30,top:50),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text("Good Morning",style: TextStyle(
+                                                    fontSize: 21,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(right: 30),
+                                                  child: Container(
+                                                    height: 90,
+                                                    width: 90,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius: BorderRadius.circular(50),
+                                                      color: Colors.white,
+                                                    ),
+                                                    child: Icon(Icons.sunny,color: Colors.yellow, size: 70,),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(height: 30,),
+                                          Padding(
+                                            padding:  EdgeInsets.symmetric(horizontal: 25.0),
+                                            child: Container(
+                                              height: 50,
+                                              width:MediaQuery.of(context).size.width,
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius: BorderRadius.circular(20)
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:15.0),
+                                                    child: Text("Automation", style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight: FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(right:15.0),
+                                                    child: Text("7 Devices", style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Color(0xFF27A8E0)
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Padding(
+                                            padding:  EdgeInsets.symmetric(horizontal: 25.0),
+                                            child: Container(
+                                              height: 50,
+                                              width:MediaQuery.of(context).size.width,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.circular(20)
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:15.0),
+                                                    child: Text("Access", style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(right:15.0),
+                                                    child: Text("2 Users", style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Color(0xFF27A8E0)
+                                                    ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Padding(
+                                            padding:  EdgeInsets.symmetric(horizontal: 25.0),
+                                            child: Container(
+                                              height: 50,
+                                              width:MediaQuery.of(context).size.width,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.circular(20)
+                                              ),
+                                              child: Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:15.0),
+                                                    child: Text("Room", style: TextStyle(
+                                                      fontSize: 10,
+                                                      fontWeight: FontWeight.bold,
+                                                    ),
+                                                    ),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(right:15.0),
+                                                    child: Text("Living room", style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Color(0xFF737373)
+                                                    ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(height: 20,),
+                                          Padding(
+                                            padding:  EdgeInsets.symmetric(horizontal: 25.0),
+                                            child: Container(
+                                              height: 50,
+                                              width:MediaQuery.of(context).size.width,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.white,
+                                                  borderRadius: BorderRadius.circular(20)
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:15.0),
+                                                    child: Icon(Icons.delete, color: Colors.red,),
+                                                  ),
+                                                  Padding(
+                                                    padding: const EdgeInsets.only(left:15.0),
+                                                    child: Text("Delete Scene", style: TextStyle(
+                                                        fontSize: 10,
+                                                        fontWeight: FontWeight.bold,
+                                                        color: Colors.black
+                                                    ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    );
+                                  }
+                              );
+                            },
                             child: Container(
                               width: 120,
                               height: 70,
