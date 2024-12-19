@@ -150,9 +150,17 @@ class Scenes extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Center(
+                        child: Text("Master Button", style: TextStyle(
+                            fontFamily: 'ProductSans',
+                            fontSize: 20,
+                            color: Colors.blue
+                          ),
+                        ),
+                      ),
                     // Grid of Containers with resized sizes
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: GridView.builder(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
@@ -162,34 +170,45 @@ class Scenes extends StatelessWidget {
                           mainAxisSpacing: 10,
                           childAspectRatio: 1.5,
                         ),
-                        itemCount: 4, // Number of containers in the grid
+                        itemCount: 20, // Number of containers in the grid
                         itemBuilder: (context, index) {
-                          return Container(
-                            width: 120,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF4F6FF),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left:15 ,top:15),
-                                  child: Text(
-                                    'Device ${index + 1}',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold
+                          return GestureDetector(
+                            child: Container(
+                              width: 120,
+                              height: 70,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFF4F6FF),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Row(
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:  EdgeInsets.only(top : 35,left: 5),
+                                        child: Icon(Icons.sunny,color: Colors.yellow,size: 50,),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 15,),
+                                  Text("Good\nMorning",style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 20, top :25),
-                                  child: Icon(Icons.lightbulb,size: 40,),
-                                )
-                              ],
+                                  SizedBox(width: 10,),
+                                  Container(
+                                    height: 40,
+                                    width: 40,
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(50)
+                                    ),
+                                    child: Icon(Icons.play_arrow),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
