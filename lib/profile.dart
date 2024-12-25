@@ -9,12 +9,29 @@ import 'package:slider_button/slider_button.dart';
 import 'package:yarab/settings.dart';
 
 
+import 'DevicesPage.dart';
+import 'Scenes.dart';
+import 'dashboard.dart';
 import 'main.dart';
 import 'roomlist.dart';
 
-class profile extends StatelessWidget {
+class profile extends StatefulWidget {
   const profile({super.key});
 
+  @override
+  State<profile> createState() => _profileState();
+}
+
+class _profileState extends State<profile> {
+  int myIndex = 3;
+
+  // List of pages for the bottom navigation bar
+  final List<Widget> _pages = [
+    dashboard(passedid: 1),        // Page 1: Scenes
+    Devicespage(),   // Page 2: Devices
+    Scenes(),// Page 4: Scan
+    profile(),       // Page 3: Profile
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -241,6 +258,43 @@ class profile extends StatelessWidget {
               ],
             ),
           )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: myIndex,
+        onTap: (index) {
+
+          setState(() {
+            myIndex = index;
+          });
+
+          // Navigate to the respective page when an index is tapped
+          Navigator.pushReplacement(
+            context,
+            _createRoute(_pages[myIndex]),
+          );
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.devices),
+            label: 'Devices',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sunny),
+            label: 'Scenes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        selectedItemColor: Colors.blue,   // Color for selected icon
+        unselectedItemColor: Colors.grey, // Color for unselected icons
+        backgroundColor: Colors.white,    // Background color of the bottom bar
+        type: BottomNavigationBarType.fixed,  // Allows fixed icons even with large labels
       ),
     );
   }

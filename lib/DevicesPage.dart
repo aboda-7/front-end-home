@@ -8,12 +8,28 @@ import 'package:yarab/roomlist.dart';
 import 'package:yarab/scan.dart';
 import 'package:slider_button/slider_button.dart';
 
+import 'Scenes.dart';
+import 'dashboard.dart';
 import 'main.dart';
 import 'roomlist.dart';
 
-class Devicespage extends StatelessWidget {
+class Devicespage extends StatefulWidget {
   const Devicespage({super.key});
 
+  @override
+  State<Devicespage> createState() => _DevicespageState();
+}
+
+class _DevicespageState extends State<Devicespage> {
+  int myIndex = 1;
+
+  // List of pages for the bottom navigation bar
+  final List<Widget> _pages = [
+    dashboard(passedid: 1),        // Page 1: Scenes
+    Devicespage(),   // Page 2: Devices
+    Scenes(),// Page 4: Scan
+    profile(),       // Page 3: Profile
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,6 +133,61 @@ class Devicespage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: myIndex,
+        onTap: (index) {
+
+          setState(() {
+            myIndex = index;
+          });
+
+          // Navigate to the respective page when an index is tapped
+          Navigator.pushReplacement(
+            context,
+            _createRoute(_pages[myIndex]),
+          );
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.devices),
+            label: 'Devices',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sunny),
+            label: 'Scenes',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        selectedItemColor: Colors.blue,   // Color for selected icon
+        unselectedItemColor: Colors.grey, // Color for unselected icons
+        backgroundColor: Colors.white,    // Background color of the bottom bar
+        type: BottomNavigationBarType.fixed,  // Allows fixed icons even with large labels
+      ),
     );
   }
+}
+Route _createRoute(Widget hello) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => hello,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const curve = Curves.easeInOutSine;
+
+      var begin = Offset(1.0, 0.0);
+      var end = Offset.zero;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+      var offsetAnimation = animation.drive(tween);
+
+      return SlideTransition(
+        position: offsetAnimation,
+        child: child,
+      );
+    },
+  );
 }
